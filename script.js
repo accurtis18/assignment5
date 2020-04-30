@@ -1,13 +1,27 @@
 $(document).ready(function(){
 
-$("#currentDay").html(moment().format('dddd') + ", " + moment().format('MMMM Do'));
-createTimeSlots();
+var localActivities = localStorage.getItem("activities");
+var activities = [];
+if(localActivities !== null && localActivities !== ""){
+    activities = JSON.parse(localActivities);
+} 
 
+
+//Set todays date at top of page
+var day = moment().format('MMMM Do');
+var dayOfWeek = moment(day, 'MMMM Do').format('dddd');
+$("#currentDay").html(dayOfWeek + ", " + day);
+//sets current date
+createTimeSlots();
+//calls function to write activities for this day to the page
+writeActivities();
+
+//creates the daily timeslots on the page starting from 9am until 5 pm. Sets classes based on if it's the current, past, or future hour
 function createTimeSlots(){
     var hr = 9;
     var cls = "";
 
-    while(hr < 22){
+    while(hr < 18){
         var currHour = moment().hour();
 
         if((hr - currHour) < 0){
@@ -19,11 +33,11 @@ function createTimeSlots(){
         }
 
         $('.timeSlots').append(`
-            <div class="input-group">
+            <div class="input-group timeSlot">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">${moment().hour(hr).format('h a')}</span>
+                    <span class="input-group-text" id="${hr}">${moment().hour(hr).format('h a')}</span>
                 </div>
-                <textarea class="form-control ${cls}" aria-label="With textarea"></textarea>
+                <textarea class="form-control event ${cls} ${hr}" id="event" aria-label="With textarea"></textarea>
                 <div class="input-group-append">
                 <button class="input-group-text bg-primary text-white" id="save">Save</button>
             </div>
@@ -32,5 +46,54 @@ function createTimeSlots(){
     }
 }
 
+//sets necessary values for a new item to be added, calls new activity to add to the array
+$('.timeSlots').on("click", '#save', function(){
+    var item = $(this).closest(".timeSlot").find("textarea[id='event'").val();
+    var hour = $(this).closest(".timeSlot").find("span").attr('id');
+    var day = $('#currentDay').text();
+    addNewActivity(item, hour, day);
+    
+});
+
+//creates a new variable to be added to the array, first checks if something already exists in the array, so it can be removed and new one added
+function addNewActivity(it, hr, dy){
+        var newToDo = {
+        id: dy + hr,
+        day: dy,
+        hour: hr,
+        text: it
+    };
+    console.log(activities.findIndex(x => x.id === newToDo.id));
+    var arrayIndex = activities.findIndex(x => x.id === newToDo.id);
+    if (arrayIndex > -1){
+        activities.splice(arrayIndex, 1);
+    }
+    activities.push(newToDo);
+    localStorage.setItem("activities", JSON.stringify(activities));
+    console.log(activities);
+}
+
+//writes the activities of the day to the page upon load
+//set to only add itmes for this particular day
+function writeActivities(){
+    for(act of activities){
+        var id = "." + act.hour;
+        console.log(id);
+        $(id).append(act.text);
+    }
+}
+
+//once it calls items for a particular day, have these buttons call write activities.
+$('#back').on('click', function(){
+    day = moment(day, 'MMMM Do').subtract(1, 'days').format('MMMM Do');
+    dayOfWeek = moment(day, 'MMMM Do').format('dddd');
+    $("#currentDay").html(dayOfWeek + ", " + day);
+});
+
+$('#forward').on('click', function(){
+    day = moment(day, 'MMMM Do').add(1, 'days').format('MMMM Do');
+    dayOfWeek = moment(day, 'MMMM Do').format('dddd');
+    $("#currentDay").html(dayOfWeek + ", " + day);
+});
 
 });
