@@ -16,7 +16,7 @@ createTimeSlots();
 //calls function to write activities for this day to the page
 writeActivities();
 
-//creates the daily timeslots on the page starting from 9am until 5 pm. Sets classes based on if it's the current, past, or future hour
+//creates the daily timeslots on the page starting from 9am until 5 pm. Sets classes based on if it's the current, past, or future hour/day
 function createTimeSlots(){
     var hr = 9;
     var cls = "";
@@ -78,7 +78,6 @@ function addNewActivity(it, hr, dy){
     }
     activities.push(newToDo);
     localStorage.setItem("activities", JSON.stringify(activities));
-    console.log(activities);
 }
 
 //writes the activities of the day to the page upon load
@@ -87,13 +86,12 @@ function writeActivities(){
     for(act of activities){
         if(act.day === $('#currentDay').text()){
             var id = "." + act.hour;
-            console.log(id);
             $(id).text(act.text);
         } 
     }
 }
 
-//once it calls items for a particular day, have these buttons call write activities.
+//move calendar back on day to see past events, creates time slots and writes items for that day
 $('#back').on('click', function(){
     day = moment(day, 'MMMM Do').subtract(1, 'days').format('MMMM Do');
     dayOfWeek = moment(day, 'MMMM Do').format('dddd');
@@ -102,6 +100,7 @@ $('#back').on('click', function(){
     writeActivities();
 });
 
+//move calendar forward a day, creates time slots for that day and writes items for that day
 $('#forward').on('click', function(){
     day = moment(day, 'MMMM Do').add(1, 'days').format('MMMM Do');
     dayOfWeek = moment(day, 'MMMM Do').format('dddd');
