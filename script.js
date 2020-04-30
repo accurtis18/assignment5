@@ -20,16 +20,24 @@ writeActivities();
 function createTimeSlots(){
     var hr = 9;
     var cls = "";
+    $(".timeSlots").html("");
 
     while(hr < 18){
         var currHour = moment().hour();
+        var calDayFormat = moment(day, 'MMMM Do');
 
-        if((hr - currHour) < 0){
-            cls = "past";
-        } else if(hr === currHour){
-            cls = "present"
+        if(moment().format('MMMM Do') === day){
+            if((hr - currHour) < 0){
+                cls = "past";
+            } else if(hr === currHour){
+                cls = "present";
+            } else{
+                cls = "future";
+            }
+        } else if(moment().isBefore(calDayFormat)) {
+            cls = "future";
         } else{
-            cls = "future"
+            cls = "past";
         }
 
         $('.timeSlots').append(`
@@ -77,9 +85,11 @@ function addNewActivity(it, hr, dy){
 //set to only add itmes for this particular day
 function writeActivities(){
     for(act of activities){
-        var id = "." + act.hour;
-        console.log(id);
-        $(id).append(act.text);
+        if(act.day === $('#currentDay').text()){
+            var id = "." + act.hour;
+            console.log(id);
+            $(id).text(act.text);
+        } 
     }
 }
 
@@ -88,12 +98,16 @@ $('#back').on('click', function(){
     day = moment(day, 'MMMM Do').subtract(1, 'days').format('MMMM Do');
     dayOfWeek = moment(day, 'MMMM Do').format('dddd');
     $("#currentDay").html(dayOfWeek + ", " + day);
+    createTimeSlots();
+    writeActivities();
 });
 
 $('#forward').on('click', function(){
     day = moment(day, 'MMMM Do').add(1, 'days').format('MMMM Do');
     dayOfWeek = moment(day, 'MMMM Do').format('dddd');
     $("#currentDay").html(dayOfWeek + ", " + day);
+    createTimeSlots();
+    writeActivities();
 });
 
 });
