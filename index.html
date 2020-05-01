@@ -4,10 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
     <title>Alex's Work Day Scheduler</title>
   </head>
     <nav class="navbar navbar-expand-lg navbar-dark font-weight-bold" style="background-color: hsl(300, 100%, 33%); ">
@@ -15,17 +13,28 @@
     </nav>
 
   <body>
-    <header class="jumbotron">
-      <h1 class="display-3">Work Day Scheduler</h1>
-      <p class="lead">A simple calendar app for scheduling your work day</p>
-      <button class="btn btn-primary" id="back">&lt</button>
-      <p id="currentDay" class="lead"></p>
-      <button class="btn btn-primary" id="forward">&gt</button>
-    </header>
-    <div class="container timeSlots">
-      <!-- Timeblocks go here -->
-    </div>
+      <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+                <h1 class="title">Work Day Scheduler</h1>
+            </div>
+          </div>
+                <div class="row date">
+                    <div class="col-md-4">
+                        <button class="btn btn-primary" id="back">&lt</button>
+                    </div>
+                    <div class="col-md-4">
+                        <p id="currentDay" class="lead"></p>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-primary" id="forward">&gt</button>
+                    </div>
+                </div>
 
+            <div class="container timeSlots">
+                <!-- Timeblocks go here -->
+             </div>
+        </div>
       <!-- Footer. -->
       <footer class="myFooter text-center fixed-bottom">
         <section class="row">
