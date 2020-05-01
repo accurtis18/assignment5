@@ -1,7 +1,16 @@
+*{
+    font-family: "Open Sans", Helvetica, sans-serif; 
+}
+
 body {
-  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
+  padding-bottom: 80px;
+}
+
+.input-group-text {
+    width: 75px;
+    background-color: white;
 }
 
 textarea{
@@ -30,11 +39,11 @@ textarea{
   border-radius: 15px;
 }
 
-.row {
+/* .row {
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;;
-}
+} */
 
 .hour {
   background-color: #ffffff;
@@ -68,4 +77,40 @@ textarea{
 .saveBtn i:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
+}
+
+.myFooter{
+    -webkit-animation: cyclecolors linear;
+    -webkit-animation-duration: 90s;
+    -webkit-animation-iteration-count: infinite;
+    animation: cyclecolors;
+    animation-duration: 90s;
+    animation-iteration-count: infinite;
+    font-family: "Open Sans", Helvetica, sans-serif;
+    color: white;
+    padding-top: 5px;
+    height: 50px;
+    background-color: hsl(300, 100%, 33%);
+    margin-top: 20px;
+}
+
+@keyframes cyclecolors{
+0% {
+    background-color: hsl(300, 100%, 33%);
+}
+16% {
+    background-color: hsl(212, 100%, 49%);
+}
+32% {
+    background-color: hsl(130, 100%, 33%);
+}
+48% {
+    background-color: #fdc345;
+}
+64% {
+    background-color: #f89438;
+}
+96% {
+    background-color: #e65453;
+}
 }
