@@ -1,23 +1,21 @@
+/* standardizing font */
 *{
     font-family: "Open Sans", Helvetica, sans-serif; 
 }
 
+/* padding for bottom of page to show over fixed footer */
 body {
   padding-bottom: 80px;
 }
 
-.input-group-text {
-    width: 75px;
-    background-color: white;
-    text-emphasis: bold;
-}
-
+/* page title */
 .title{
     margin-top: 30px;
     text-align: center;
     margin-bottom: 20px;
 }
 
+/* Next four format the date and date paging buttons */
 .date{
     text-align: center;
     margin-bottom: 20px;
@@ -31,22 +29,16 @@ body {
 #back{
     float: right;
 }
-/* 
-@media (max-width: 768px){
-    #back{
-        float: left;
-        margin-right: 10px;
-    }
-    #forward{
-        margin-left: 10px;
-    }
-    .col-xs-4{
-        text-align: center;
-    }
-} */
 
 #forward{
     float: left;
+}
+
+/* Followig five format the input for saving tasks and column colors based on time and save button */
+.input-group-text {
+    width: 75px;
+    background-color: white;
+    text-emphasis: bold;
 }
 
 #save{
@@ -69,6 +61,7 @@ body {
   color: white;
 }
 
+/* format for fixed footer */
 .myFooter{
     -webkit-animation: cyclecolors linear;
     -webkit-animation-duration: 90s;

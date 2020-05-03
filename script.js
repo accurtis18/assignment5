@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+//Intializing global variables for saving activies to local storage
 var localActivities = localStorage.getItem("activities");
 var activities = [];
 if(localActivities !== null && localActivities !== ""){
@@ -71,7 +72,6 @@ function addNewActivity(it, hr, dy){
         hour: hr,
         text: it
     };
-    console.log(activities.findIndex(x => x.id === newToDo.id));
     var arrayIndex = activities.findIndex(x => x.id === newToDo.id);
     if (arrayIndex > -1){
         activities.splice(arrayIndex, 1);
