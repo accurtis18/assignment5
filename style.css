@@ -23,9 +23,27 @@ body {
     margin-bottom: 20px;
 }
 
+.button{
+    margin: 0 auto;
+    width: 50%;
+}
+
 #back{
     float: right;
 }
+/* 
+@media (max-width: 768px){
+    #back{
+        float: left;
+        margin-right: 10px;
+    }
+    #forward{
+        margin-left: 10px;
+    }
+    .col-xs-4{
+        text-align: center;
+    }
+} */
 
 #forward{
     float: left;
