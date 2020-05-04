@@ -33,13 +33,12 @@ body {
 }
 
 .forback:hover{
-    background-color:  hsl(300, 100%, 33%);
-    border-color: black;
+    background-color:  hsl(300, 86%, 25%);
+    border-color: hsl(300, 86%, 25%);
 }
 
 #back{
     float: right;
-
 }
 
 #forward{
@@ -53,7 +52,9 @@ body {
     color: white;
     margin-right: 2px;
     margin-left: 2px;
+    margin-bottom: 1px;
     border-radius: 5px;
+
 }
 
 .time{
@@ -81,8 +82,6 @@ body {
     }
 }
 
-
-
 /* Followig five format the input for saving tasks and column colors based on time and save button */
 .input-group-text {
     width: 75px;
@@ -94,6 +93,8 @@ body {
 #save{
     width: 75px;
     padding-left: 17px;
+    border-radius: 5px;
+    margin-bottom: .5px;
 }
 
 .past {
