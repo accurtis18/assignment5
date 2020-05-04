@@ -26,19 +26,69 @@ body {
     width: 50%;
 }
 
+.forback{
+    background-color: hsl(300, 100%, 33%);
+    border-color: hsl(300, 100%, 33%);
+    border-width: 2px;
+}
+
+.forback:hover{
+    background-color:  hsl(300, 100%, 33%);
+    border-color: black;
+}
+
 #back{
     float: right;
+
 }
 
 #forward{
     float: left;
 }
 
+.headers{
+    text-align: center;
+    font-size: 20px;
+    background-color: hsl(300, 100%, 33%);
+    color: white;
+    margin-right: 2px;
+    margin-left: 2px;
+    border-radius: 5px;
+}
+
+.time{
+    padding-left: 5px;
+}
+
+.svcol{
+    text-align: left;
+    padding-left: 22px;
+}
+
+@media (max-width: 992px){
+    .time, .schedule, .svcol{
+        width: 33%;
+        padding: 0;
+    }
+    .time{
+        text-align: left;
+        padding-left: 5px;
+    }
+    .svcol{
+        text-align: right;
+        padding-left: 0;
+        padding-right: 5px;
+    }
+}
+
+
+
 /* Followig five format the input for saving tasks and column colors based on time and save button */
 .input-group-text {
     width: 75px;
     background-color: white;
-    text-emphasis: bold;
+    font-weight: bold;
+    text-align: center;
 }
 
 #save{
@@ -47,17 +97,17 @@ body {
 }
 
 .past {
-  background-color: #d3d3d3;
-  color: white;
-}
-
-.present {
-  background-color: #ff6961;
-  color: white;
+  background-color: #ebebeb;
+  color: rgb(95, 95, 95);
 }
 
 .future {
-  background-color: #77dd77;
+  background-color: white;
+  color: black;
+}
+
+.present {
+  background-color: hsl(130, 100%, 33%);
   color: white;
 }
 

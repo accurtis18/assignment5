@@ -22,6 +22,17 @@ function createTimeSlots(){
     var hr = 9;
     var cls = "";
     $(".timeSlots").html("");
+    $(".timeSlots").append(`<div class="row headers">
+        <div class="col-md-1 col-xs-1 time">
+            Time
+        </div>
+        <div class="col-md-10 col-xs-10 schedule">
+            Schedule
+        </div>
+        <div class="col-md-1 col-xs-1 svcol">
+            Save
+        </div>
+    </div>`);
 
     while(hr < 18){
         var currHour = moment().hour();
