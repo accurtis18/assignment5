@@ -30,12 +30,27 @@ body {
     background-color: hsl(300, 100%, 33%);
     border-color: hsl(300, 100%, 33%);
     border-width: 2px;
+    color: white;
 }
 
 .forback:hover{
     background-color:  hsl(300, 86%, 25%);
     border-color: hsl(300, 86%, 25%);
+    color: white;
 }
+
+.forback:active{
+    background-color: hsl(300, 100%, 33%);
+    border-color: hsl(300, 100%, 33%);
+    border-width: 2px;
+}
+
+.forback:focus{
+    background-color: hsl(300, 100%, 33%);
+    border-color: hsl(300, 100%, 33%);
+    border-width: 2px;
+    box-shadow: none;
+} 
 
 #back{
     float: right;
@@ -62,7 +77,7 @@ body {
 }
 
 .svcol{
-    text-align: left;
+    text-align: center;
     padding-left: 22px;
 }
 
